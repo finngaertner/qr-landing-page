@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Your Campaign Page</title>
+  <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+  <script>
+    emailjs.init(GrK3PNM3XwVuGy6Zw); // Replace with your EmailJS public key
+  </script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding: 40px;
+      background-color: #f4f4f4;
+    }
+
+    .container {
+      background: white;
+      padding: 30px;
+      max-width: 500px;
+      margin: auto;
+      border-radius: 10px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.1);
+    }
+
+    h1 {
+      color: #333;
+    }
+
+    .description {
+      margin-bottom: 20px;
+      color: #666;
+    }
+
+    input, textarea {
+      width: 100%;
+      padding: 10px;
+      margin-top: 10px;
+      margin-bottom: 20px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    .send-btn {
+      background-color: red;
+      color: white;
+      padding: 12px 25px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .send-btn:hover {
+      background-color: darkred;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Your Catchy Slogan Here!</h1>
+    <p class="description">Let us know your thoughts and send us a quick note:</p>
+
+    <form id="contact-form">
+      <input type="email" id="email" name="email" placeholder="Your email address" required>
+      <textarea id="message" name="message" rows="6">Hello, I’m reaching out regarding...</textarea>
+      <br>
+      <button type="submit" class="send-btn">Send</button>
+    </form>
+  </div>
+
+  <script>
+    document.getElementById('contact-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      emailjs.send(service_ft6jkzk, template_jvv3l5o, {
+        from_email: document.getElementById("email").value,
+        message: document.getElementById("message").value
+      }).then(function(response) {
+        alert("Message sent successfully!");
+      }, function(error) {
+        alert("Failed to send message: " + error.text);
+      });
+    });
+  </script>
+</body>
+</html>
