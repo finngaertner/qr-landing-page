@@ -66,25 +66,29 @@
   </div>
 
   <script type="module">
-    import emailjs from 'https://cdn.emailjs.com/dist/email.min.mjs';
+  import emailjs from 'https://cdn.emailjs.com/dist/email.min.mjs';
 
-    emailjs.init("GrK3PNM3XwVuGy6Zw");
+  emailjs.init("GrK3PNM3XwVuGy6Zw");
 
-    document.getElementById('contact-form').addEventListener('submit', function(e) {
-      e.preventDefault();
+  document.getElementById('contact-form').addEventListener('submit', function(e) {
+    e.preventDefault();
 
-      emailjs.send("service_ft6jkzk", "template_jvv3l5o", {
-        to_email: document.getElementById("email").value,
-        message: document.getElementById("message").value
-      }).then(function(response) {
-        document.querySelector('.container').innerHTML = `
-          <h1>Thanks!</h1>
-          <p>We’ve sent your message to your inbox. 🎉</p>
-        `;
-      }, function(error) {
-        alert("Failed to send message: " + error.text);
-      });
+    console.log("Send button clicked");
+
+    emailjs.send("service_ft6jkzk", "template_jvv3l5o", {
+      to_email: document.getElementById("email").value,
+      message: document.getElementById("message").value
+    }).then(function(response) {
+      console.log("SUCCESS", response);
+      document.querySelector('.container').innerHTML = `
+        <h1>Thanks!</h1>
+        <p>We’ve sent your message to your inbox. 🎉</p>
+      `;
+    }, function(error) {
+      console.error("ERROR", error);
+      alert("Failed to send message: " + error.text);
     });
-  </script>
+  });
+</script>
 </body>
 </html>
