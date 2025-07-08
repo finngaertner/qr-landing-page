@@ -54,7 +54,7 @@
 </head>
 <body>
   <div class="container">
-    <h1>BBonvoyo - B.wegt, B.zahlt, B.geistert</h1>
+    <h1>Bonvoyo – B.wegt, B.zahlt, B.geistert</h1>
     <p class="description">Let us know your thoughts and send us a quick note:</p>
 
     <form id="contact-form">
@@ -68,7 +68,7 @@
   <script type="module">
     import emailjs from 'https://cdn.emailjs.com/dist/email.min.mjs';
 
-    emailjs.init("GrK3PNM3XwVuGy6Zw"); // your public key
+    emailjs.init("GrK3PNM3XwVuGy6Zw"); // Your public key
 
     document.getElementById('contact-form').addEventListener('submit', function(e) {
       e.preventDefault();
@@ -77,7 +77,10 @@
         from_email: document.getElementById("email").value,
         message: document.getElementById("message").value
       }).then(function(response) {
-        alert("Message sent successfully!");
+        document.querySelector('.container').innerHTML = `
+          <h1>Thank you!</h1>
+          <p>We received your message and will get back to you soon.</p>
+        `;
       }, function(error) {
         alert("Failed to send message: " + error.text);
       });
