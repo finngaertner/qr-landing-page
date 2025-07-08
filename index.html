@@ -2,11 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Your Campaign Page</title>
-  <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
-  <script>
-    emailjs.init("GrK3PNM3XwVuGy6Zw"); // Replace with your EmailJS public key
-  </script>
+  <title>Bonvoyo - QR Landing Page</title>
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -58,7 +54,7 @@
 </head>
 <body>
   <div class="container">
-    <h1>Bonvoyo - B.wegt, B.zahlt, B.geistert</h1>
+    <h1>BBonvoyo - B.wegt, B.zahlt, B.geistert</h1>
     <p class="description">Let us know your thoughts and send us a quick note:</p>
 
     <form id="contact-form">
@@ -69,7 +65,11 @@
     </form>
   </div>
 
-  <script>
+  <script type="module">
+    import emailjs from 'https://cdn.emailjs.com/dist/email.min.mjs';
+
+    emailjs.init("GrK3PNM3XwVuGy6Zw"); // your public key
+
     document.getElementById('contact-form').addEventListener('submit', function(e) {
       e.preventDefault();
 
