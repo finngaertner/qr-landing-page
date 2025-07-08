@@ -59,6 +59,7 @@
 
     <form id="contact-form">
       <input type="email" id="email" name="email" placeholder="Your email address" required>
+      <input type="email" id="to_email" name="to_email" placeholder="Recipient email address" required>
       <textarea id="message" name="message" rows="6">Hello, I’m reaching out regarding...</textarea>
       <br>
       <button type="submit" class="send-btn">Send</button>
@@ -75,6 +76,7 @@
 
       emailjs.send("service_ft6jkzk", "template_jvv3l5o", {
         from_email: document.getElementById("email").value,
+        to_email: document.getElementById("to_email").value,
         message: document.getElementById("message").value
       }).then(function(response) {
         document.querySelector('.container').innerHTML = `
