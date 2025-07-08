@@ -5,7 +5,7 @@
   <title>Your Campaign Page</title>
   <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
   <script>
-    emailjs.init(GrK3PNM3XwVuGy6Zw); // Replace with your EmailJS public key
+    emailjs.init("GrK3PNM3XwVuGy6Zw"); // Replace with your EmailJS public key
   </script>
   <style>
     body {
@@ -73,7 +73,7 @@
     document.getElementById('contact-form').addEventListener('submit', function(e) {
       e.preventDefault();
 
-      emailjs.send(service_ft6jkzk, template_jvv3l5o, {
+      emailjs.send("service_ft6jkzk", "template_jvv3l5o", {
         from_email: document.getElementById("email").value,
         message: document.getElementById("message").value
       }).then(function(response) {
