@@ -55,11 +55,10 @@
 <body>
   <div class="container">
     <h1>Bonvoyo – B.wegt, B.zahlt, B.geistert</h1>
-    <p class="description">Let us know your thoughts and send us a quick note:</p>
+    <p class="description">Receive your message in your inbox – just enter your email:</p>
 
     <form id="contact-form">
       <input type="email" id="email" name="email" placeholder="Your email address" required>
-      <input type="email" id="to_email" name="to_email" placeholder="Recipient email address" required>
       <textarea id="message" name="message" rows="6">Hello, I’m reaching out regarding...</textarea>
       <br>
       <button type="submit" class="send-btn">Send</button>
@@ -69,19 +68,18 @@
   <script type="module">
     import emailjs from 'https://cdn.emailjs.com/dist/email.min.mjs';
 
-    emailjs.init("GrK3PNM3XwVuGy6Zw"); // Your public key
+    emailjs.init("GrK3PNM3XwVuGy6Zw");
 
     document.getElementById('contact-form').addEventListener('submit', function(e) {
       e.preventDefault();
 
       emailjs.send("service_ft6jkzk", "template_jvv3l5o", {
-        from_email: document.getElementById("email").value,
-        to_email: document.getElementById("to_email").value,
+        to_email: document.getElementById("email").value,
         message: document.getElementById("message").value
       }).then(function(response) {
         document.querySelector('.container').innerHTML = `
-          <h1>Thank you!</h1>
-          <p>We received your message and will get back to you soon.</p>
+          <h1>Thanks!</h1>
+          <p>We’ve sent your message to your inbox. 🎉</p>
         `;
       }, function(error) {
         alert("Failed to send message: " + error.text);
